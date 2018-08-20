@@ -1,0 +1,165 @@
+<html>
+<head>
+    <title>Availability Report</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js" type="text/javascript"></script>   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="pie_css.css">
+</head>
+
+<body>
+    <div class="split left">
+        <h2 id="title">Average Host Availability</h2>        
+        <h4 id="title-desc">All Hosts</h4>
+        <canvas id="pie_chart"></canvas>    
+        <div id="time-period">Report covers from: 2018-08-19 10:59:18 to 2018-08-20 10:59:18</div>    
+        <table id="table" class="table table-striped" style="text-align:center">    
+            <thead>
+                <tr>
+                    <th class="left-width">Host</th> 
+                    <th class="left-width">Up</th>
+                    <th class="left-width">Down</th>
+                    <th class="left-width">Unreachable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>127.0.0.1</td>
+                    <td>70%</td>
+                    <td>20%</td>
+                    <td>10%</td>
+                </tr>
+                <tr>
+                    <td>127.0.0.2</td>
+                    <td>70%</td>
+                    <td>20%</td>
+                    <td>10%</td>
+                </tr>
+                <tr>
+                    <td>127.0.0.3</td>
+                    <td>70%</td>
+                    <td>20%</td>
+                    <td>10%</td>
+                </tr>
+                <tr>
+                    <th>Average</th>
+                    <td>70%</td>
+                    <td>20%</td>
+                    <td>10%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="split right">
+        <h2 id="title">Average Service Availability</h2>
+        <h4 id="title-desc">All Services</h4>
+        <canvas id="pie_chart2"></canvas>
+        <div id="time-period">Report covers from: 2018-08-19 10:59:18 to 2018-08-20 10:59:18</div>
+        <table id="table" class="table table-striped" style="text-align:center">      
+            <thead>
+                <tr style="text-align:center">
+                    <th class="right-width">Host</th>
+                    <th class="right-width">Service</th>
+                    <th class="right-width">Ok</th>
+                    <th class="right-width">Warning</th>
+                    <th class="right-width">Unknown</th>
+                    <th class="right-width">Critical</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>127.0.0.1</td>
+                    <td>PING</td>
+                    <td>80%</td>
+                    <td>10%</td>
+                    <td>5%</td>
+                    <td>5%</td>
+                </tr>
+                <tr>
+                    <td>127.0.0.2</td>
+                    <td>PING</td>
+                    <td>80%</td>
+                    <td>10%</td>
+                    <td>5%</td>
+                    <td>5%</td>
+                </tr>
+                <tr>
+                    <td>127.0.0.3</td>
+                    <td>PING</td>
+                    <td>80%</td>
+                    <td>10%</td>
+                    <td>5%</td>
+                    <td>5%</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th>Average</th>
+                    <td>80%</td>
+                    <td>10%</td>
+                    <td>5%</td>
+                    <td>5%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+<script type="text/javascript">
+
+var pie_canvas = document.getElementById("pie_chart").getContext('2d');
+var pie_canvas2 = document.getElementById("pie_chart2").getContext('2d');
+
+var pie_chart = new Chart(pie_canvas, {
+    type: 'pie',
+    data: {
+        labels: ["Up", "Down", "Unreachable"],
+        datasets: [{
+            label: "Host Availability",
+            data: [70, 20, 10],
+            backgroundColor: [
+                "#b2ff5f",
+                "#FF795F",
+                "#FFC85F"  
+            ],
+            borderColor: "#ffffff",
+            borderWidth: 2,            
+        }]
+    },
+    options: {
+        cutoutPercentage: 40,
+        maintainAspectRatio: true,
+        responsive: true,
+        animation: {
+            animateScale: true
+        }
+    }
+});
+
+var pie_chart2 = new Chart(pie_canvas2, {
+    type: 'pie',
+    data: {
+        labels: ["Ok", "Warning", "Unknown", "Critical"],
+        datasets: [{
+            label: "Service Availability",
+            data: [80, 10, 5, 5],
+            backgroundColor: [
+                "#b2ff5f",
+                "#feff5f",
+                "#FF795F",
+                "#FFC85F"               
+            ],
+            borderColor: "#ffffff",
+            borderWidth: 2,            
+        }]
+    },
+    options: {
+        cutoutPercentage: 40,
+        maintainAspectRatio: true,
+        responsive: true,
+        animation: {
+            animateScale: true
+        }
+    }
+});
+
+</script>
