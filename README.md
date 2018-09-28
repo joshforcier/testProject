@@ -1,3 +1,1 @@
-# testproject
-
-AJAX Example
+random stuff
